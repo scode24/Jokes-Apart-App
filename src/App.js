@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import "./App.css";
+import ThemeChanger from "./componenets/ThemeChanger";
 
 function App() {
   const StartingJokes = [
@@ -26,31 +27,41 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen gap-5">
-      <div className="flex flex-row gap-2">
-        <div className="flex flex-col justify-center text-3xl border-r px-3">
-          🤪
+    <>
+      <div className="flex flex-col justify-center items-center h-screen gap-5 dark:bg-zinc-900 dark:text-zinc-200">
+        <div className="flex flex-row gap-2">
+          <div className="flex flex-col justify-center text-3xl border-r px-3">
+            🤪
+          </div>
+          <div className="flex flex-col justify-center text-2xl font-thin">
+            Jokes Apart
+          </div>
         </div>
-        <div className="flex flex-col justify-center text-2xl font-thin">
-          Jokes Apart
+
+        <span className="px-[10%] text-center text-3xl mx-auto md:text-5xl">
+          {getJokes()}
+        </span>
+
+        <div className="flex flex-row rounded-md border p-3 mt-7 gap-3 dark:bg-zinc-900 dark:text-zinc-200 dark:border-zinc-800">
+          <input
+            className="dark:bg-zinc-900"
+            type="text"
+            placeholder="Enter Username"
+          />
+          <motion.button
+            className="flex flex-col justify-center items-center rounded-full border w-[30px] h-[30px] dark:text-zinc-200 dark:border-zinc-800"
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span>→</span>
+          </motion.button>
         </div>
       </div>
 
-      <span className="px-[10%] text-center text-3xl mx-auto md:text-5xl">
-        {getJokes()}
-      </span>
-
-      <div className="flex flex-row rounded-md border p-3 mt-7 gap-3">
-        <input type="text" placeholder="Enter Username" />
-        <motion.button
-          className="flex flex-col justify-center items-center rounded-full border w-[30px] h-[30px]"
-          whileHover={{ scale: 1.07 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span>→</span>
-        </motion.button>
+      <div className="absolute top-3 right-3">
+        <ThemeChanger />
       </div>
-    </div>
+    </>
   );
 }
 

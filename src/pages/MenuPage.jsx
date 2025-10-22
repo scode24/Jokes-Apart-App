@@ -16,7 +16,7 @@ const MenuPage = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-[70vh]">
+    <div className="flex flex-col justify-center items-center h-full">
       <div className="flex flex-col items-center gap-3">
         <span className="text-green-500">Welcome! Soumyabrata</span>
         <span className="text-xl md:text-3xl">Select An Option</span>

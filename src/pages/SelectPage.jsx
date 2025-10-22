@@ -35,7 +35,7 @@ const SelectPage = () => {
       list[index].isSelected = false;
       selectedTechList = selectedTechList.filter((e) => e.tag !== tag);
     } else {
-      if (selectedList.length == 5) return;
+      if (selectedList.length === 5) return;
       list[index].isSelected = true;
       selectedTechList.push(list[index]);
     }
@@ -45,14 +45,14 @@ const SelectPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 h-full">
       <span>Bugs are the only thing that ship on time. 🐛🚀</span>
       <div className="flex flex-row justify-between">
         <span className="flex flex-col justify-center text-xl py-3 md:text-3xl">
           Select 5 technologies you like most
         </span>
 
-        {selectedList.length == 5 && (
+        {selectedList.length === 5 && (
           <div className="flex flex-row rounded-md border p-3 gap-3">
             <div className="flex flex-col justify-center">Continue</div>
 
@@ -69,7 +69,7 @@ const SelectPage = () => {
         )}
       </div>
       <span className="text-green-500">Selected {selectedList.length}/5</span>
-      <div className="grid gap-3 mt-10 grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
+      <div className="grid gap-3 mt-10 grid-cols-2 overflow-y-auto h-[90%] md:h-auto md:grid-cols-4 lg:grid-cols-7">
         {techList.map((tech, index) => {
           return (
             <TechBox
