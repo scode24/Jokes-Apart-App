@@ -9,13 +9,9 @@ const ThemeChanger = () => {
   };
 
   return (
-    <div className="cursor-pointer" onClick={() => toggleTheme()}>
-      {!islight && (
-        <div className="flex flex-col justify-center text-2xl">🌝</div>
-      )}
-      {islight && (
-        <div className="flex flex-col justify-center text-2xl">🌚</div>
-      )}
+    <div className="cursor-pointer text-xs" onClick={() => toggleTheme()}>
+      {!islight && <div className="flex flex-col justify-center">🌝</div>}
+      {islight && <div className="flex flex-col justify-center">🌚</div>}
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import TechBox from "../componenets/TechBox";
+import useUserStore from "../stores/UserStore";
 
 const MenuPage = () => {
   const navigate = useNavigate();
+  const { user } = useUserStore();
 
   const onClickHandle = (index, tag) => {
     switch (tag) {
@@ -18,11 +20,11 @@ const MenuPage = () => {
   return (
     <div className="flex flex-col justify-center items-center h-full">
       <div className="flex flex-col items-center gap-3">
-        <span className="text-green-500">Welcome! Soumyabrata</span>
+        <span className="text-green-500">Welcome! {user}</span>
         <span className="text-xl md:text-3xl">Select An Option</span>
       </div>
 
-      <div className="flex flex-row mt-10 gap-3">
+      <div className="flex flex-col mt-10 gap-3 md:flex-row">
         <TechBox
           name="Select Technology"
           tag="select-tech"

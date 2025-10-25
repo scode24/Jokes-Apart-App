@@ -1,8 +1,17 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ThemeChanger from "./ThemeChanger";
+import useUserStore from "../stores/UserStore";
 
 const Header = () => {
+  const { user, setUser } = useUserStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user === null || user === undefined) {
+      navigate("/");
+      return;
+    }
+  }, [user]);
 
   return (
     <div className="flex flex-row justify-between p-5 border-b sticky z-10 top-0 bg-white dark:bg-zinc-900 dark:text-zinc-200 dark:border-zinc-800">
@@ -17,11 +26,18 @@ const Header = () => {
       </div>
 
       <div className="flex flex-row gap-3">
-        <button className="flex flex-col justify-center rounded-md border px-3 text-sm dark:bg-zinc-900 dark:text-zinc-200 dark:border-zinc-800">
-          GitHub
-        </button>
+        <div className="flex flex-row gap-3">
+          <div className="flex flex-col justify-center border-r px-3 text-green-500 dark:border-zinc-800">
+            <strong>{user}</strong>
+          </div>
 
-        <ThemeChanger />
+          <div
+            className="flex flex-col justify-center cursor-pointer"
+            onClick={() => setUser(undefined)}
+          >
+            <span>Sign Out</span>
+          </div>
+        </div>
       </div>
     </div>
   );

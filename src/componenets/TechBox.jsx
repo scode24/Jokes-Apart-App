@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 const TechBox = ({ index, name, tag, icon, isSelected, onclickfn }) => {
   return (
     <motion.div
-      className="flex flex-col justify-between rounded-md border shadow-sm cursor-pointer w-full md:h-[150px] dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-800"
+      className="flex flex-col justify-between rounded-md border shadow-sm cursor-pointer w-full md:h-[150px] bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-800"
       style={isSelected ? { borderColor: "yellowgreen" } : {}}
       whileHover={{ scale: 1.07 }}
       whileTap={{ scale: 0.95 }}

@@ -1,10 +1,15 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import BackButton from "../componenets/BackButton";
 import TechBox from "../componenets/TechBox";
+import useApiCaller from "../hooks/ApiCaller";
+import useUserStore from "../stores/UserStore";
 
 const SelectPage = () => {
-  const [selectedList, setSelectedList] = useState([]);
-  const [techList, setTechList] = useState([
+  const { user, userTechList, setUserTechList } = useUserStore();
+  const { call } = useApiCaller();
+  const [selectedList, setSelectedList] = useState("");
+  const [techList] = useState([
     { name: "React", isSelected: false, tag: "react" },
     { name: "Node.js", isSelected: false, tag: "nodejs" },
     { name: "Express.js", isSelected: false, tag: "expressjs" },
@@ -27,33 +32,72 @@ const SelectPage = () => {
     { name: "Kafka", isSelected: false, tag: "kafka" },
   ]);
 
-  const onClickHandle = (index, tag) => {
-    let list = [...techList];
-    let selectedTechList = [...selectedList];
-
-    if (list[index].isSelected) {
-      list[index].isSelected = false;
-      selectedTechList = selectedTechList.filter((e) => e.tag !== tag);
-    } else {
-      if (selectedList.length === 5) return;
-      list[index].isSelected = true;
-      selectedTechList.push(list[index]);
+  useEffect(() => {
+    if (userTechList !== undefined) {
+      setSelectedList(userTechList);
     }
+  }, [userTechList]);
 
-    setTechList(list);
-    setSelectedList(selectedTechList);
+  const getSelectedCount = () => {
+    if (!selectedList) return 0;
+    return selectedList.split(",").length;
+  };
+
+  const onClickHandle = (indx, tag) => {
+    const list = selectedList.split(",").filter(Boolean);
+    const index = list.indexOf(tag);
+
+    if (index === -1) {
+      if (selectedList.split(",").length === 5) return;
+      list.push(tag);
+    } else {
+      list.splice(index, 1);
+    }
+    setSelectedList(list.join(","));
+  };
+
+  const isTagInSelected = (tag) => {
+    const list = selectedList.split(",").filter((i) => i == tag);
+    return list.length > 0 ? true : false;
+  };
+
+  const addUserTechList = async () => {
+    try {
+      const response = await call(
+        "/add-user-tech-list",
+        "post",
+        {
+          username: user,
+          list: selectedList,
+        },
+        "Adding user preference"
+      );
+
+      if (response.status === "list updated") {
+        setUserTechList(selectedList);
+        alert(
+          "User preference is successfully added / updated. Now you can enjoy jokes."
+        );
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
   };
 
   return (
     <div className="flex flex-col gap-3 h-full">
-      <span>Bugs are the only thing that ship on time. 🐛🚀</span>
+      <BackButton />
+      {/* <span>Bugs are the only thing that ship on time. 🐛🚀</span> */}
       <div className="flex flex-row justify-between">
         <span className="flex flex-col justify-center text-xl py-3 md:text-3xl">
           Select 5 technologies you like most
         </span>
 
-        {selectedList.length === 5 && (
-          <div className="flex flex-row rounded-md border p-3 gap-3">
+        {selectedList != "" && selectedList.split(",").length === 5 && (
+          <div
+            className="flex flex-row rounded-md border p-3 gap-3"
+            onClick={() => addUserTechList()}
+          >
             <div className="flex flex-col justify-center">Continue</div>
 
             <motion.div
@@ -68,7 +112,7 @@ const SelectPage = () => {
           </div>
         )}
       </div>
-      <span className="text-green-500">Selected {selectedList.length}/5</span>
+      <span className="text-green-500">Selected {getSelectedCount()}/5</span>
       <div className="grid gap-3 mt-10 grid-cols-2 overflow-y-auto h-[90%] md:h-auto md:grid-cols-4 lg:grid-cols-7">
         {techList.map((tech, index) => {
           return (
@@ -77,7 +121,7 @@ const SelectPage = () => {
               index={index}
               name={tech.name}
               tag={tech.tag}
-              isSelected={tech.isSelected}
+              isSelected={isTagInSelected(tech.tag)}
               onclickfn={onClickHandle}
             />
           );
