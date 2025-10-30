@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FooterOptions from "./componenets/FooterOptions";
 import useApiCaller from "./hooks/ApiCaller";
+import LoadingPage from "./pages/LoadingPage";
+import useLoaderDataStore from "./stores/LoaderDataStore";
 import useUserStore from "./stores/UserStore";
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
   const { call } = useApiCaller();
   const navigate = useNavigate();
   const { setUser } = useUserStore();
+  const { message } = useLoaderDataStore();
 
   const StartingJokes = [
     "Why did the React developer feel broke? Because they used up all their cache!",
@@ -101,7 +104,12 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-screen gap-5 dark:bg-zinc-900 dark:text-zinc-200">
+      <div
+        className="flex flex-col justify-center items-center h-screen gap-5 dark:bg-zinc-900 dark:text-zinc-200"
+        style={{
+          filter: message !== undefined ? "blur(3px)" : "",
+        }}
+      >
         <div className="flex flex-row gap-2">
           <div className="flex flex-col justify-center text-3xl border-r px-3">
             🤪
@@ -164,6 +172,7 @@ function App() {
         </form>
       </div>
 
+      <LoadingPage />
       <FooterOptions />
     </>
   );

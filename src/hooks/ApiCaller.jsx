@@ -1,8 +1,12 @@
 import axios from "axios";
+import useLoaderDataStore from "../stores/LoaderDataStore";
 
 const useApiCaller = () => {
+  const { setMessage } = useLoaderDataStore();
+
   const call = async (url, method, payload, loadingMessage) => {
     try {
+      setMessage(loadingMessage);
       let response;
       url = process.env.REACT_APP_N8N_BASE_API + url;
       if (method === "get") {
@@ -17,6 +21,8 @@ const useApiCaller = () => {
       console.error("API Error:", err);
       alert(errorMessage);
       throw err;
+    } finally {
+      setMessage(undefined);
     }
   };
 

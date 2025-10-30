@@ -4,7 +4,7 @@ const TechBox = ({ index, name, tag, icon, isSelected, onclickfn }) => {
   return (
     <motion.div
       className="flex flex-col justify-between rounded-md border shadow-sm cursor-pointer w-full md:h-[150px] bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-800"
-      style={isSelected ? { borderColor: "yellowgreen" } : {}}
+      style={isSelected ? { borderColor: "#89AB00" } : {}}
       whileHover={{ scale: 1.07 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => onclickfn(index, tag)}
@@ -20,7 +20,7 @@ const TechBox = ({ index, name, tag, icon, isSelected, onclickfn }) => {
         </span>
         <div
           className="h-[5px] rounded-b-md"
-          style={isSelected ? { backgroundColor: "yellowgreen" } : {}}
+          style={isSelected ? { backgroundColor: "#89AB00" } : {}}
         ></div>
       </div>
     </motion.div>

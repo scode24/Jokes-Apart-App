@@ -93,9 +93,9 @@ const SelectPage = () => {
           Select 5 technologies you like most
         </span>
 
-        {selectedList != "" && selectedList.split(",").length === 5 && (
+        {selectedList !== "" && selectedList.split(",").length === 5 && (
           <div
-            className="flex flex-row rounded-md border p-3 gap-3"
+            className="flex flex-row rounded-md border p-3 gap-3 dark:border-zinc-800"
             onClick={() => addUserTechList()}
           >
             <div className="flex flex-col justify-center">Continue</div>
@@ -112,8 +112,8 @@ const SelectPage = () => {
           </div>
         )}
       </div>
-      <span className="text-green-500">Selected {getSelectedCount()}/5</span>
-      <div className="grid gap-3 mt-10 grid-cols-2 overflow-y-auto h-[90%] md:h-auto md:grid-cols-4 lg:grid-cols-7">
+      <span className="text-[#89AB00]">Selected {getSelectedCount()}/5</span>
+      <div className="grid gap-3 mt-7 grid-cols-2 overflow-y-auto h-[90%] md:h-auto md:grid-cols-4 lg:grid-cols-7">
         {techList.map((tech, index) => {
           return (
             <TechBox

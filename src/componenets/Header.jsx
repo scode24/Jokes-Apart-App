@@ -27,7 +27,7 @@ const Header = () => {
 
       <div className="flex flex-row gap-3">
         <div className="flex flex-row gap-3">
-          <div className="flex flex-col justify-center border-r px-3 text-green-500 dark:border-zinc-800">
+          <div className="flex flex-col justify-center border-r px-3 text-[#89AB00] dark:border-zinc-800">
             <strong>{user}</strong>
           </div>
 
