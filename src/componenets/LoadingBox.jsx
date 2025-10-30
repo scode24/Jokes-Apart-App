@@ -15,7 +15,7 @@ const LoadingBox = () => {
       }}
     >
       <div className="flex flex-col justify-center items-center text-2xl h-[70px] md:text-5xl ">
-        🤭
+        🤔
       </div>
       <div className="text-center p-5 font-thin">
         <span>{message}</span>
