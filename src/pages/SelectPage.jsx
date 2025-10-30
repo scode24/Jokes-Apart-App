@@ -70,7 +70,7 @@ const SelectPage = () => {
           username: user,
           list: selectedList,
         },
-        "Adding user preference"
+        "Adding user preference..."
       );
 
       if (response.status === "list updated") {

@@ -63,7 +63,7 @@ function App() {
             username: formData.username.trim(),
             password: getHash(formData.password),
           },
-          "Proceeding with user"
+          "Registering user..."
         );
 
         if (response.status === "user present") {
@@ -86,7 +86,7 @@ function App() {
             username: formData.username.trim(),
             password: getHash(formData.password),
           },
-          "Proceeding with user"
+          "Signing in user..."
         );
 
         if (response.status === "login failed") {
