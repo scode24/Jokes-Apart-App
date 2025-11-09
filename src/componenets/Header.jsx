@@ -14,7 +14,7 @@ const Header = () => {
   }, [user]);
 
   return (
-    <div className="flex flex-row justify-between p-5 border-b sticky z-10 top-0 bg-white dark:bg-zinc-900 dark:text-zinc-200 dark:border-zinc-800">
+    <div className="flex flex-row justify-between px-5 py-3 border-b sticky z-10 top-0 bg-white dark:bg-zinc-900 dark:text-zinc-200 dark:border-zinc-800">
       <div
         className="flex flex-row gap-2 cursor-pointer"
         onClick={() => navigate("/main/menu")}

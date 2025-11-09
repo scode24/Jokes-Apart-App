@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import BackButton from "../componenets/BackButton";
 import JokeBox from "../componenets/JokeBox";
+import useApiCaller from "../hooks/ApiCaller";
+import useUserStore from "../stores/UserStore";
 
 const JokesPage = () => {
+  const [jokes, setJokes] = useState({
+    joke1: undefined,
+    joke2: undefined,
+  });
+  const { user, userTechList } = useUserStore();
+  const { call } = useApiCaller();
+
   const funnyJokesLines = [
     "Freshly brewed jokes, just for you ☕😂",
     "Warning: Jokes incoming! Handle with laughter.",
@@ -13,6 +23,30 @@ const JokesPage = () => {
     "Knock knock — it’s me, bringing jokes again 😜",
   ];
 
+  useEffect(() => {
+    const fetchJokes = async () => {
+      try {
+        const response = await call(
+          "/get-jokes",
+          "post",
+          {
+            username: user,
+          },
+          "Fetching your jokes..."
+        );
+
+        setJokes({
+          joke1: response[0]?.joke1,
+          joke2: response[0]?.joke2,
+        });
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+
+    fetchJokes();
+  }, []);
+
   const getLine = () => {
     return funnyJokesLines[Math.floor(Math.random() * funnyJokesLines.length)];
   };
@@ -20,17 +54,15 @@ const JokesPage = () => {
   return (
     <div>
       <BackButton />
-      <div className="flex flex-col justify-center items-center h-[70vh] gap-12">
-        <span className="text-xl md:text-3xl">{getLine()}</span>
-        <div className="flex flex-col gap-3 md:flex-row">
-          <JokeBox
-            joke={
-              "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-            }
-          />
-          <JokeBox joke={"some joke"} />
+      {jokes.joke1 !== undefined && jokes.joke2 !== undefined && (
+        <div className="flex flex-col justify-center items-center h-[70vh] gap-12">
+          <span className="text-xl md:text-3xl">{getLine()}</span>
+          <div className="flex flex-col gap-3 md:flex-row">
+            <JokeBox joke={jokes.joke1} />
+            <JokeBox joke={jokes.joke2} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
