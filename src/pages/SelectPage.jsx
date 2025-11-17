@@ -95,18 +95,18 @@ const SelectPage = () => {
 
         {selectedList !== "" && selectedList.split(",").length === 5 && (
           <div
-            className="flex flex-row rounded-md border p-3 gap-3 dark:border-zinc-800"
+            className="flex flex-row rounded-md border px-3 gap-3 dark:border-zinc-800 cursor-pointer"
             onClick={() => addUserTechList()}
           >
-            <div className="flex flex-col justify-center">Continue</div>
+            <div className="flex flex-col justify-center">Save / Update</div>
 
             <motion.div
               className="flex flex-col justify-center"
-              whileHover={{ scale: 1.07 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button className="flex flex-col justify-center items-center rounded-full border w-[30px] h-[30px]">
-                <span>→</span>
+              <button className="flex flex-col justify-center items-center">
+                <span>💾</span>
               </button>
             </motion.div>
           </div>

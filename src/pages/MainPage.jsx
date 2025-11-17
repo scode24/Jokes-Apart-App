@@ -45,7 +45,7 @@ const MainPage = () => {
         }}
       >
         <Header />
-        <div className="p-7 h-[calc(100vh-72px)]">
+        <div className="p-3 pb-9 h-[calc(100vh-72px)] md:p-7">
           <Outlet />
         </div>
       </div>

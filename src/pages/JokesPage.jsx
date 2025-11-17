@@ -55,12 +55,13 @@ const JokesPage = () => {
     <div>
       <BackButton />
       {jokes.joke1 !== undefined && jokes.joke2 !== undefined && (
-        <div className="flex flex-col justify-center items-center h-[70vh] gap-12">
+        <div className="flex flex-col justify-center items-center mt-[20px] h-[70vh] gap-5 overflow-y-auto md:gap-10">
           <span className="text-xl md:text-3xl">{getLine()}</span>
           <div className="flex flex-col gap-3 md:flex-row">
             <JokeBox joke={jokes.joke1} />
             <JokeBox joke={jokes.joke2} />
           </div>
+          <span>Fresh jokes will be unlocked in 12 hours</span>
         </div>
       )}
     </div>
