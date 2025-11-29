@@ -1,8 +1,6 @@
-```markdown
 # Jokes Apart
 
 [![Live Demo](https://img.shields.io/badge/Live%20App-Netlify-brightgreen)](https://jokes-apart-app.netlify.app/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub Issues](https://img.shields.io/github/issues/YOUR_GITHUB_ORG/jokes-apart.svg)](https://github.com/YOUR_GITHUB_ORG/jokes-apart/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/YOUR_GITHUB_ORG/jokes-apart.svg)](https://github.com/YOUR_GITHUB_ORG/jokes-apart/stargazers)
 
@@ -125,4 +123,3 @@ We look forward to your contributions!
 ---
 
 **Note**: Remember to replace `YOUR_GITHUB_ORG/jokes-apart` with your actual GitHub repository path, and update `[Your Name/Team Name]` in the maintainer section.
-```
