@@ -113,12 +113,10 @@ If you encounter any issues or have questions, please refer to the following res
 
 ## Who maintains and contributes
 
-This project is maintained by **[Your Name/Team Name]**.
+This project is maintained by **[https://github.com/scode24]**.
 
-We welcome contributions from the community! If you're interested in improving Jokes Apart, please check out our:
-
-*   **[Contribution Guidelines](CONTRIBUTING.md)**: Details on how to set up your development environment, submit pull requests, and more.
-*   **[Code of Conduct](CODE_OF_CONDUCT.md)**: Our standards for a welcoming and inclusive community.
+We welcome contributions from the community! If you're interested in improving Jokes Apart, please let me know.
+Email ID : sarkar.soumyabrata2@gmail.com
 
 We look forward to your contributions!
 
