@@ -1,5 +1,7 @@
 # Jokes Apart
 
+![Timeline View](Banner.png)
+
 [![Live Demo](https://img.shields.io/badge/Live%20App-Netlify-brightgreen)](https://jokes-apart-app.netlify.app/)
 [![GitHub Issues](https://img.shields.io/github/issues/YOUR_GITHUB_ORG/jokes-apart.svg)](https://github.com/YOUR_GITHUB_ORG/jokes-apart/issues)
 [![GitHub Stars](https://img.shields.io/github/stars/YOUR_GITHUB_ORG/jokes-apart.svg)](https://github.com/YOUR_GITHUB_ORG/jokes-apart/stargazers)
